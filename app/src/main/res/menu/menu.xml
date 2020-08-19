@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <group android:menuCategory="container">
         <item android:id="@+id/menu1"
-            android:title="Menu 1"/>
+            android:title="Tambahkan"/>
         <item android:id="@+id/menu2"
             android:title="Menu 2" />
     </group>

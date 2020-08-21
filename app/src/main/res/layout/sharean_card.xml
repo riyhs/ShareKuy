@@ -14,22 +14,11 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:layout_marginTop="8dp"
-            android:scaleType="fitXY"
-            android:src="@drawable/ic_launcher_background"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView3" />
+        android:layout_height="wrap_content"
+        android:paddingBottom="8dp">
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/tvCourseName"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -37,52 +26,68 @@
             android:layout_marginEnd="8dp"
             android:maxLines="1"
             android:text="Judul"
-            android:textSize="24sp"
+            android:textSize="22sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toStartOf="@+id/imageButton"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/textView3"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="8dp"
-            android:ellipsize="end"
-            android:maxLines="1"
-            android:text="Deskripsi Singkat"
-            android:textSize="14sp"
-            app:layout_constraintEnd_toStartOf="@+id/imageButton"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView" />
-
-        <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/tvCourseDescription"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp"
-            android:layout_marginBottom="8dp"
             android:ellipsize="end"
-            android:maxLines="2"
+            android:maxLines="4"
             android:text="ShareKuy adalah platform untuk berbagi informasi tentang usaha-usaha untuk memajukan pendidikan yang merata untuk semua kalangan di Indonesia. Semoga bermanfaat."
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView" />
+            app:layout_constraintTop_toBottomOf="@+id/tvCategory" />
 
         <ImageButton
             android:id="@+id/imageButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
+            android:layout_marginEnd="16dp"
             android:background="#00FFFFFF"
             android:scaleType="centerInside"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/textView"
-            app:srcCompat="@drawable/ic_favorite" />
+            app:layout_constraintTop_toTopOf="@+id/tvCourseName"
+            app:srcCompat="@drawable/ic_favorite_empty" />
+
+        <TextView
+            android:id="@+id/tvCategory"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            android:textStyle="bold|italic"
+            app:layout_constraintEnd_toEndOf="@+id/tvCourseName"
+            app:layout_constraintStart_toStartOf="@+id/tvCourseName"
+            app:layout_constraintTop_toBottomOf="@+id/tvCourseName" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chipInstagram"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Instagram"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="@+id/tvCourseDescription"
+            app:layout_constraintTop_toBottomOf="@+id/tvCourseDescription"
+            tools:visibility="visible" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chipWebsite"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="Website"
+            android:visibility="gone"
+            app:layout_constraintStart_toEndOf="@+id/chipInstagram"
+            app:layout_constraintTop_toTopOf="@+id/chipInstagram"
+            tools:visibility="visible" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

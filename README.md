@@ -4,7 +4,7 @@ ShareKuy is a platform for sharing informations about Education, ShareKuy focuss
 ## How To Use
 - First, open menu in the top-right, tap "Tambahkan" menu, and fill the data.
 - "Nama", "Deskripsi" field is Required,
-- for "Link akun Instagram" and "Link website" field, one must be filled.
+- For "Link akun Instagram" and "Link website" field, one must be filled.
 
 - For "Kategori", select one of the most suitable for your data.
 

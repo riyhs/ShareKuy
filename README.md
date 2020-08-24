@@ -1,8 +1,5 @@
 # ShareKuy
-ShareKuy is a platform for sharing informations about Education, ShareKuy focussing sharing about Free Online Course. ShareKuy is undergoing development, any advices is very helpful, download .apk in the link below.
-
-## Download
-[Download .apk](https://github.com/riyhs/ShareKuy/raw/master/app/build/outputs/apk/debug/shareKuy.apk)
+ShareKuy is a platform for sharing informations about Education, ShareKuy focussing sharing about Free Online Course. ShareKuy is undergoing development, any advices is very helpful, download .apk in the link which have been provided. [Download](https://github.com/riyhs/ShareKuy/raw/master/app/build/outputs/apk/debug/shareKuy.apk)
 
 ## How To Use
 First, open menu in the top-right, tap "Tambahkan" menu, and fill the data.

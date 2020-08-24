@@ -19,12 +19,12 @@ import com.riyaldi.sharekuy.utils.Firebase.COURSES_PATH_COLLECTION
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.sharean_card.view.*
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(){
 
     private lateinit var mAdapter: FirestoreRecyclerAdapter<ShareanCourse, ShareanCoursesViewHolder>
     private val mFirestore = FirebaseFirestore.getInstance()
     private val shareanCourseCollection = mFirestore.collection(COURSES_PATH_COLLECTION)
-    private var mQuery = shareanCourseCollection.limit(20)
+    private var mQuery = shareanCourseCollection.whereEqualTo("status", "accepted")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -61,11 +61,58 @@ class MainActivity : AppCompatActivity() {
         mAdapter.stopListening()
     }
 
+
+    private fun chipClick() {
+        chipAll.setOnClickListener {
+            mAdapter.stopListening()
+            mQuery = shareanCourseCollection.whereEqualTo("status", "accepted")
+            setAdapter(mQuery)
+            mAdapter.startListening()
+        }
+        chipSchool.setOnClickListener {
+            mAdapter.stopListening()
+            mQuery = shareanCourseCollection.whereEqualTo("status", "accepted")
+                .whereEqualTo("courseCategory", "materi_sekolah")
+            setAdapter(mQuery)
+            mAdapter.startListening()
+        }
+        chipTech.setOnClickListener {
+            mAdapter.stopListening()
+            mQuery = shareanCourseCollection.whereEqualTo("status", "accepted")
+                .whereEqualTo("courseCategory", "teknologi")
+            setAdapter(mQuery)
+            mAdapter.startListening()
+        }
+        chipMotivation.setOnClickListener {
+            mAdapter.stopListening()
+            mQuery = shareanCourseCollection.whereEqualTo("status", "accepted")
+                .whereEqualTo("courseCategory", "motivasi")
+            setAdapter(mQuery)
+            mAdapter.startListening()
+        }
+        chipCreativity.setOnClickListener {
+            mAdapter.stopListening()
+            mQuery = shareanCourseCollection.whereEqualTo("status", "accepted")
+                .whereEqualTo("courseCategory", "kreativitas")
+            setAdapter(mQuery)
+            mAdapter.startListening()
+        }
+        chipOthers.setOnClickListener {
+            mAdapter.stopListening()
+            mQuery = shareanCourseCollection.whereEqualTo("status", "accepted")
+                .whereEqualTo("courseCategory", "yang_lainnya")
+            setAdapter(mQuery)
+            mAdapter.startListening()
+        }
+    }
+
     private fun initView() {
         rvSharean.apply {
             layoutManager = LinearLayoutManager(this@MainActivity)
             setHasFixedSize(true)
         }
+
+        chipClick()
     }
 
     private fun setAdapter(query: Query) {

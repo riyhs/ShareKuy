@@ -13,8 +13,69 @@
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/hsvChips"
+        app:layout_constraintVertical_bias="0.0"
         tools:listitem="@layout/sharean_card" />
+
+    <HorizontalScrollView
+        android:id="@+id/hsvChips"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:scrollbars="none"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/chipGroup"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:singleLine="true">
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipAll"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:clickable="true"
+                android:text="semua" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipSchool"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:text="materi_sekolah" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipTech"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="teknologi" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipMotivation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="motivasi" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipCreativity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="kreativitas" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipOthers"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:text="yang_lainnya" />
+        </com.google.android.material.chip.ChipGroup>
+
+    </HorizontalScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -42,7 +42,7 @@ class MainActivity : AppCompatActivity(){
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.menu1 -> {
+            R.id.menuAdd -> {
                 startActivity(Intent(this@MainActivity, AddActivity::class.java))
                 return true
             }
@@ -197,5 +197,3 @@ class MainActivity : AppCompatActivity(){
         }
     }
 }
-
-//Todo 1. Home (Daftar ShareAn)

@@ -23,17 +23,20 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginEnd="24dp"
-        android:text="ShareKuy is a platform for sharing information about Education, We are focussing to sharing about Free Online Course. ShareKuy is undergoing development, any advice is very helpful."
+        android:text="@string/about_description"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ivAboutLogo" />
+        app:layout_constraintTop_toBottomOf="@+id/ivAboutLogo"
+        app:lineHeight="24dp" />
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="32dp"
         android:text="ShareKuy by "
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/tvAboutRiyaldi"
         app:layout_constraintHorizontal_bias="0.5"
@@ -46,6 +49,7 @@
         android:layout_height="wrap_content"
         android:text="Riyaldi Hasan"
         android:textColor="#204CEC"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="@+id/textView2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"

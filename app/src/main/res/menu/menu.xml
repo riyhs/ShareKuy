@@ -2,8 +2,8 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <group android:menuCategory="container">
         <item android:id="@+id/menuAdd"
-            android:title="Tambahkan"/>
+            android:title="@string/tambahkan"/>
         <item android:id="@+id/menuAbout"
-            android:title="Tentang" />
+            android:title="@string/tentang" />
     </group>
 </menu>

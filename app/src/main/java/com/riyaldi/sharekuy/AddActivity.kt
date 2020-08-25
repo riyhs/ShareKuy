@@ -24,12 +24,6 @@ class AddActivity : AppCompatActivity() {
         initView()
     }
 
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        val inflater = menuInflater
-        inflater.inflate(R.menu.menu, menu)
-        return true
-    }
-
     private fun initView() {
         btSaveAddCourses.setOnClickListener {
             val shareanCourse = initData()

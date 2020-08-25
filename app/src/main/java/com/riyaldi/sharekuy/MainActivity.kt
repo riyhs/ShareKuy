@@ -5,7 +5,6 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.view.*
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isGone
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -145,13 +144,6 @@ class MainActivity : AppCompatActivity(){
                 model: ShareanCourse
             ) {
                 holder.bind(model)
-                holder.itemView.setOnClickListener {
-                    Toast.makeText(
-                        applicationContext,
-                        "Klik ${model.courseName}",
-                        Toast.LENGTH_SHORT
-                    ).show()
-                }
             }
         }
         mAdapter.notifyDataSetChanged()

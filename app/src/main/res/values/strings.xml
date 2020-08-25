@@ -1,7 +1,6 @@
 <resources>
     <string name="app_name">ShareKuy</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="about_description">ShareKuy adalah platform untuk berbagi informasi tentang Pendidikan, Kami memfokuskan untuk berbagi tentang Kursus Online Gratis. ShareKuy sedang dalam pengembangan, saran apa pun akan sangat membantu.\n\nJika menurutmu Aplikasi ini bermanfaat jangan lupa bagikan ke teman-teman kamu ya.., mari berbagi kepada sesama, sesederhana apapun itu yang kamu bagikan, akan sangat berarti kepada temen-temen kita yang lagi membutuhkan.</string>
-    <string name="tambahkan">Tambahkan</string>
-    <string name="tentang">Tentang</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="about_description">ShareKuy adalah platform untuk berbagi informasi tentang Pendidikan, Kami memfokuskan untuk berbagi tentang Kursus Online Gratis. ShareKuy sedang dalam pengembangan, saran apa pun akan sangat membantu.\n\nKalau menurutmu aplikasi ini bermanfaat, jangan lupa share ke temen-temen kamu ya, terus bagikan hal-hal positif, sesederhana apapun itu akan menjadi sangat berguna kepada temen-temen kita yang sedang membutuhkan.</string>
 </resources>

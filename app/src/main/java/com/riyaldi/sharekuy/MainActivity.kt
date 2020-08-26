@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -245,6 +246,7 @@ class MainActivity : AppCompatActivity(){
         val db = CourseDatabase.getInstance(applicationContext)
         val dao = db.courseDao()
         dao.getById(id).observe(this, Observer { data ->
+            Log.d("DATA", "$data")
             if (data.isNotEmpty() && data[0].id.isNotEmpty()) {
                 isFav = true
                 changeLoveIcon(isFav)

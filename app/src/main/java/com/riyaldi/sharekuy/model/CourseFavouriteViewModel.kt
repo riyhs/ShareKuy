@@ -2,6 +2,7 @@ package com.riyaldi.sharekuy.model
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.LiveData
 import com.riyaldi.sharekuy.db.Course
 import com.riyaldi.sharekuy.db.CourseDao
 import com.riyaldi.sharekuy.db.CourseDatabase
@@ -13,8 +14,8 @@ class CourseFavouriteViewModel (application: Application) : AndroidViewModel(app
     private val repository : CourseRepository
     private val courseDao: CourseDao = CourseDatabase.getInstance(application).courseDao()
 
-    private var _favCourse : List<Course>
-    val favCourse: List<Course>
+    private var _favCourse : LiveData<List<Course>>
+    val favCourse: LiveData<List<Course>>
         get() = _favCourse
 
     init {

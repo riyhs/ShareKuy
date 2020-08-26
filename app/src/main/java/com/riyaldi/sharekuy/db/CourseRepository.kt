@@ -1,7 +1,9 @@
 package com.riyaldi.sharekuy.db
 
+import androidx.lifecycle.LiveData
+
 class CourseRepository (private val courseDao: CourseDao) {
-    val allCourse: List<Course> = courseDao.getAll()
+    val allCourse: LiveData<List<Course>> = courseDao.getAll()
 
     fun delete(course: Course) {
         courseDao.delete(course)

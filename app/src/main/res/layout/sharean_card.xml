@@ -29,7 +29,7 @@
             android:text="Judul"
             android:textSize="22sp"
             android:textStyle="bold"
-            app:layout_constraintEnd_toStartOf="@+id/imageButton"
+            app:layout_constraintEnd_toStartOf="@+id/ibFav"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -48,7 +48,7 @@
             app:layout_constraintTop_toBottomOf="@+id/tvCategory" />
 
         <ImageButton
-            android:id="@+id/imageButton"
+            android:id="@+id/ibFav"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"

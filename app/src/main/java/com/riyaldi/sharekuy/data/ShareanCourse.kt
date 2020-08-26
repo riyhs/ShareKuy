@@ -1,4 +1,4 @@
-package com.riyaldi.sharekuy.model
+package com.riyaldi.sharekuy.data
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize

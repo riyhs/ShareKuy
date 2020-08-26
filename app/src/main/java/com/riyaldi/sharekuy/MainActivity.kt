@@ -13,7 +13,7 @@ import com.firebase.ui.firestore.FirestoreRecyclerAdapter
 import com.firebase.ui.firestore.FirestoreRecyclerOptions
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
-import com.riyaldi.sharekuy.model.ShareanCourse
+import com.riyaldi.sharekuy.data.ShareanCourse
 import com.riyaldi.sharekuy.utils.Firebase.COURSES_PATH_COLLECTION
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.sharean_card.view.*

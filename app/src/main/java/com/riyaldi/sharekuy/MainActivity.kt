@@ -206,41 +206,8 @@ class MainActivity : AppCompatActivity(){
 
                     context.startActivity(intentWeb)
                 }
-
-//                chipsValidation(shareanCourse, context)
             }
         }
-
-//        private fun chipsValidation(shareanCourse: ShareanCourse, context : Context) {
-//            if (shareanCourse.courseInstagram.isNotEmpty() && shareanCourse.courseWebsite.isNotEmpty()) {
-//                chipInstagram.isGone = false
-//                chipWebsite.isGone = false
-//            } else if (shareanCourse.courseWebsite.isNotEmpty() && shareanCourse.courseInstagram.isEmpty()) {
-//                chipWebsite.isGone = false
-//
-//                // Remove margin when chipInstagram.isGone = true
-//                val param = chipWebsite.layoutParams as ViewGroup.MarginLayoutParams
-//                param.marginStart = 0
-//                chipWebsite.layoutParams = param
-//            } else {
-//                chipInstagram.isGone = false
-//            }
-//
-//            chipInstagram.setOnClickListener {
-//                val intentIg = Intent(Intent.ACTION_VIEW)
-//                intentIg.data = Uri.parse(shareanCourse.courseInstagram)
-//                intentIg.setPackage("com.instagram.android")
-//
-//                context.startActivity(intentIg)
-//            }
-//
-//            chipWebsite.setOnClickListener {
-//                val intentWeb = Intent(Intent.ACTION_VIEW)
-//                intentWeb.data = Uri.parse(shareanCourse.courseWebsite)
-//
-//                context.startActivity(intentWeb)
-//            }
-//        }
     }
 }
 

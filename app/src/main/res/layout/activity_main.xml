@@ -33,14 +33,18 @@
             android:id="@+id/chipGroup"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            app:singleLine="true">
+            app:singleLine="true"
+            app:selectionRequired="true"
+            app:singleSelection="true">
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/chipAll"
+                style="@style/CustomChipChoice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:clickable="true"
+                android:focusable="true"
                 android:text="semua" />
 
             <com.google.android.material.chip.Chip
@@ -48,32 +52,46 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:clickable="true"
-                android:text="materi_sekolah" />
+                android:focusable="true"
+                android:text="materi_sekolah"
+                style="@style/CustomChipChoice"/>
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/chipTech"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="teknologi" />
+                android:clickable="true"
+                android:focusable="true"
+                android:text="teknologi"
+                style="@style/CustomChipChoice"/>
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/chipMotivation"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="motivasi" />
+                android:clickable="true"
+                android:focusable="true"
+                android:text="motivasi"
+                style="@style/CustomChipChoice"/>
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/chipCreativity"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="kreativitas" />
+                android:clickable="true"
+                android:focusable="true"
+                android:text="kreativitas"
+                style="@style/CustomChipChoice"/>
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/chipOthers"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="16dp"
-                android:text="yang_lainnya" />
+                android:clickable="true"
+                android:focusable="true"
+                android:text="yang_lainnya"
+                style="@style/CustomChipChoice" />
         </com.google.android.material.chip.ChipGroup>
 
     </HorizontalScrollView>

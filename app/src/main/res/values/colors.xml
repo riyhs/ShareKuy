@@ -3,5 +3,9 @@
     <color name="colorPrimary">#212121</color>
     <color name="colorPrimaryDark">#000000</color>
     <color name="colorAccent">#484848</color>
-    <color name="colorIg">#6B389E</color>
+    <color name="colorIg">#5851DB</color>
+    <color name="colorWeb">#30EF8C</color>
+    <color name="colorChecked">#E0E0E0</color>
+    <color name="colorUnChecked">#FFF</color>
+    <color name="colorTransparent">#00FFFFFF</color>
 </resources>

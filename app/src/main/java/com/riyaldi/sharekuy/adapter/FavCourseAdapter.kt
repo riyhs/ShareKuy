@@ -22,7 +22,9 @@ class FavCourseAdapter (private val course: List<Course>) : RecyclerView.Adapter
         return ListViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: FavCourseAdapter.ListViewHolder, position: Int) = holder.bind(course[position])
+    override fun onBindViewHolder(holder: FavCourseAdapter.ListViewHolder, position: Int) {
+        holder.bind(course[position])
+    }
 
     override fun getItemCount(): Int = course.size
 

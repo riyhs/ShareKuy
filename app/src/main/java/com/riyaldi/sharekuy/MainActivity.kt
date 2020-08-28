@@ -178,6 +178,9 @@ class MainActivity : AppCompatActivity(){
                 tvCourseDescription.text = description
                 tvCategory.text = "Kategori : $category"
 
+                btInstagram.isGone = true
+                btWebsite.isGone = true
+
                 if (shareanCourse.courseInstagram.isNotEmpty() && shareanCourse.courseWebsite.isNotEmpty()) {
                     btInstagram.isGone = false
                     btWebsite.isGone = false

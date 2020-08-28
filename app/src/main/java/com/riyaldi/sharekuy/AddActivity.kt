@@ -1,10 +1,10 @@
 package com.riyaldi.sharekuy
 
 import android.os.Bundle
-import android.view.Menu
 import android.widget.RadioButton
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.firebase.firestore.FirebaseFirestore
 import com.riyaldi.sharekuy.utils.Firebase.COURSES_PATH_COLLECTION
 import kotlinx.android.synthetic.main.activity_add.*
@@ -30,17 +30,29 @@ class AddActivity : AppCompatActivity() {
             if (etInstagram.text != null && etWebsite.text != null && rgCategory.checkedRadioButtonId != -1 && etCourseName.text != null && etCourseDescription.text != null) {
                 if (etCourseName.text!!.isNotEmpty() && etCourseDescription.text!!.isNotEmpty()) {
                     if (etInstagram.text!!.isNotEmpty() || etWebsite.text!!.isNotEmpty()) {
-                        saveData(shareanCourse)
+                        buildDialog(shareanCourse)
                     }
                 }
             }
         }
     }
 
+    private fun buildDialog(shareanCourse: MutableMap<String, Any>) {
+        MaterialAlertDialogBuilder(this)
+            .setTitle("Catatan")
+            .setMessage("Pastikan data yang dimasukan sudah sesuai, setiap data yang di unggah akan kami tinjau dalam waktu 1 x 24 jam sebelum di tampilkan ke aplikasi, terima kasih telah berpartisipasi dalam usaha memajukan dunia pendidikan di Indonesia")
+
+            .setPositiveButton("Simpan Data") { _, _ ->
+                saveData(shareanCourse)
+            }
+            .show()
+    }
+
     private fun saveData(shareanCourse : MutableMap<String, Any>) = CoroutineScope(Dispatchers.IO).launch {
         shareanCourseCollection.document(setIdByTime()).set(shareanCourse)
             .addOnCompleteListener {
-                if (it.isSuccessful) Toast.makeText(this@AddActivity, "Berhasil menambahkan ${shareanCourse["courseName"]}, status = \"pending\".", Toast.LENGTH_LONG).show()
+                finish()
+                if (it.isSuccessful) Toast.makeText(this@AddActivity, "Berhasil menambahkan ${shareanCourse["courseName"]}", Toast.LENGTH_LONG).show()
                 else Toast.makeText(this@AddActivity, "Gagal menambahkan ${shareanCourse["courseName"]}, ulangi beberapa menit lagi.", Toast.LENGTH_LONG).show()
             }
             .addOnFailureListener {

@@ -45,8 +45,6 @@ class MainActivity : AppCompatActivity(){
             setHasFixedSize(true)
         }
 
-//        chipInstagram.setChipBackgroundColorResource(R.color.colorIg)
-
         chipClick()
     }
 
@@ -215,6 +213,3 @@ class MainActivity : AppCompatActivity(){
         }
     }
 }
-
-//Todo warna tag category onClicked / active
-//Todo website / instagram

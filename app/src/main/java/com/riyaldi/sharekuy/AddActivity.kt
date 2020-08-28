@@ -73,7 +73,7 @@ class AddActivity : AppCompatActivity() {
 
         if (courseName != null) courseSharean["courseName"] = courseName.toString()
         if (courseDescription != null) courseSharean["courseDescription"] = courseDescription.toString()
-        if (courseInstagram != null) courseSharean["courseInstagram"] = courseInstagram.toString()
+        if (courseInstagram != null) courseSharean["courseInstagram"] = "http://instagram.com/$courseInstagram"
         if (courseWebsite != null) courseSharean["courseWebsite"] = courseWebsite.toString()
         courseSharean["courseCategory"] = courseCategory
 

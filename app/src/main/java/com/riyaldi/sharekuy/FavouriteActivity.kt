@@ -17,6 +17,9 @@ class FavouriteActivity : AppCompatActivity() {
         setContentView(R.layout.activity_favourite)
 
         getFavUserData()
+
+        supportActionBar?.title = "Favorit"
+
     }
 
     private fun setAdapter(courseData: List<Course>) {

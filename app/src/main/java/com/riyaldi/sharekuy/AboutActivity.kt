@@ -11,6 +11,8 @@ class AboutActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_about)
 
+        supportActionBar?.title = "Tentang ShareKuy"
+
         tvAboutRiyaldi.setOnClickListener {
             val intentWeb = Intent(Intent.ACTION_VIEW)
             intentWeb.data = Uri.parse("http://riyhs.github.io")

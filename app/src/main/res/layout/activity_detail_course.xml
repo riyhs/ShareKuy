@@ -17,6 +17,7 @@
         android:text="Name"
         android:textColor="@android:color/primary_text_light"
         android:textSize="30sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -25,7 +26,7 @@
         android:id="@+id/tvdetailCourseDescription"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         android:text="Deskripsi"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="@+id/tvDetailCourseName"
@@ -70,30 +71,28 @@
         app:srcCompat="@drawable/ic_favourite_white"
         app:tint="@android:color/white" />
 
-    <com.google.android.material.chip.Chip
-        android:id="@+id/chipDetailCourseInstagram"
-        android:layout_width="wrap_content"
+    <Button
+        android:id="@+id/btDetailInstagram"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="24dp"
+        android:backgroundTint="@color/colorIg"
         android:text="Instagram"
         android:visibility="gone"
-        android:textColor="@android:color/white"
-        app:chipSurfaceColor="@color/colorIg"
+        app:layout_constraintEnd_toEndOf="@+id/tvdetailCourseDescription"
         app:layout_constraintStart_toStartOf="@+id/tvdetailCourseDescription"
         app:layout_constraintTop_toBottomOf="@+id/tvdetailCourseDescription"
         tools:visibility="visible" />
 
-    <com.google.android.material.chip.Chip
-        android:id="@+id/chipDetailCourseWebsite"
-        android:layout_width="wrap_content"
+    <Button
+        android:id="@+id/btDetailWebsite"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
+        android:backgroundTint="@color/colorWeb"
         android:text="Website"
         android:visibility="gone"
-        android:textColor="@android:color/white"
-        app:chipSurfaceColor="@color/colorWeb"
-        app:layout_constraintBottom_toBottomOf="@+id/chipDetailCourseInstagram"
-        app:layout_constraintStart_toEndOf="@+id/chipDetailCourseInstagram"
-        app:layout_constraintTop_toTopOf="@+id/chipDetailCourseInstagram"
+        app:layout_constraintEnd_toEndOf="@+id/tvdetailCourseDescription"
+        app:layout_constraintStart_toStartOf="@+id/tvdetailCourseDescription"
+        app:layout_constraintTop_toBottomOf="@+id/btDetailInstagram"
         tools:visibility="visible" />
 </androidx.constraintlayout.widget.ConstraintLayout>

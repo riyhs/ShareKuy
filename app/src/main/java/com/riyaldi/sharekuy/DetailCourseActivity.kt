@@ -1,10 +1,11 @@
 package com.riyaldi.sharekuy
 
-import android.content.Context
 import android.content.Intent
+import android.content.res.Resources
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
+import android.util.TypedValue
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -16,8 +17,8 @@ import com.riyaldi.sharekuy.data.ShareanCourse
 import com.riyaldi.sharekuy.db.CourseDatabase
 import com.riyaldi.sharekuy.model.CourseFavouriteViewModel
 import kotlinx.android.synthetic.main.activity_detail_course.*
-import kotlinx.android.synthetic.main.sharean_card.*
 import kotlinx.coroutines.InternalCoroutinesApi
+
 
 @InternalCoroutinesApi
 class DetailCourseActivity : AppCompatActivity() {
@@ -52,21 +53,28 @@ class DetailCourseActivity : AppCompatActivity() {
     }
 
     private fun chipsValidation(shareanCourse: ShareanCourse) {
-        if (shareanCourse.courseInstagram.isNotEmpty() && shareanCourse.courseWebsite.isNotEmpty()) {
-            chipDetailCourseInstagram.isGone = false
-            chipDetailCourseWebsite.isGone = false
-        } else if (shareanCourse.courseWebsite.isNotEmpty() && shareanCourse.courseInstagram.isEmpty()) {
-            chipDetailCourseWebsite.isGone = false
+        val dip = 24f
+        val r: Resources = resources
+        val px = TypedValue.applyDimension(
+            TypedValue.COMPLEX_UNIT_DIP,
+            dip,
+            r.displayMetrics
+        )
 
-            // Remove margin when chipInstagram.isGone = true
-            val param = chipDetailCourseInstagram.layoutParams as ViewGroup.MarginLayoutParams
-            param.marginStart = 0
-            chipDetailCourseWebsite.layoutParams = param
+        if (shareanCourse.courseInstagram.isNotEmpty() && shareanCourse.courseWebsite.isNotEmpty()) {
+            btDetailInstagram.isGone = false
+            btDetailWebsite.isGone = false
+        } else if (shareanCourse.courseWebsite.isNotEmpty() && shareanCourse.courseInstagram.isEmpty()) {
+            btDetailWebsite.isGone = false
+
+            val param = btDetailWebsite.layoutParams as ViewGroup.MarginLayoutParams
+            param.topMargin = px.toInt()
+            btDetailWebsite.layoutParams = param
         } else {
-            chipDetailCourseInstagram.isGone = false
+            btDetailInstagram.isGone = false
         }
 
-        chipDetailCourseInstagram.setOnClickListener {
+        btDetailInstagram.setOnClickListener {
             val intentIg = Intent(Intent.ACTION_VIEW)
             intentIg.data = Uri.parse(shareanCourse.courseInstagram)
             intentIg.setPackage("com.instagram.android")
@@ -74,7 +82,7 @@ class DetailCourseActivity : AppCompatActivity() {
             startActivity(intentIg)
         }
 
-        chipDetailCourseWebsite.setOnClickListener {
+        btDetailWebsite.setOnClickListener {
             val intentWeb = Intent(Intent.ACTION_VIEW)
             intentWeb.data = Uri.parse(shareanCourse.courseWebsite)
 
@@ -106,7 +114,11 @@ class DetailCourseActivity : AppCompatActivity() {
                     courseWebsite = shareanCourse.courseWebsite,
                     status = shareanCourse.status
                 )
-                Toast.makeText(this@DetailCourseActivity, "Deleted from Favourite", Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    this@DetailCourseActivity,
+                    "Deleted from Favourite",
+                    Toast.LENGTH_SHORT
+                ).show()
             }
         }
     }
@@ -127,7 +139,17 @@ class DetailCourseActivity : AppCompatActivity() {
     }
 
     private fun changeLoveIcon(state: Boolean) {
-        if (state) fabFav.setImageDrawable(ContextCompat.getDrawable(applicationContext, R.drawable.ic_favorite))
-        else fabFav.setImageDrawable(ContextCompat.getDrawable(applicationContext, R.drawable.ic_favorite_empty))
+        if (state) fabFav.setImageDrawable(
+            ContextCompat.getDrawable(
+                applicationContext,
+                R.drawable.ic_favorite
+            )
+        )
+        else fabFav.setImageDrawable(
+            ContextCompat.getDrawable(
+                applicationContext,
+                R.drawable.ic_favorite_empty
+            )
+        )
     }
 }

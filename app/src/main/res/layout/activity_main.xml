@@ -67,22 +67,22 @@
                 style="@style/CustomChipChoice"/>
 
             <com.google.android.material.chip.Chip
-                android:id="@+id/chipMotivation"
+                android:id="@+id/chipGeneral"
+                style="@style/CustomChipChoice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:clickable="true"
                 android:focusable="true"
-                android:text="motivasi"
-                style="@style/CustomChipChoice"/>
+                android:text="umum" />
 
             <com.google.android.material.chip.Chip
-                android:id="@+id/chipCreativity"
+                android:id="@+id/chipContent"
+                style="@style/CustomChipChoice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:clickable="true"
                 android:focusable="true"
-                android:text="kreativitas"
-                style="@style/CustomChipChoice"/>
+                android:text="konten_positif" />
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/chipOthers"

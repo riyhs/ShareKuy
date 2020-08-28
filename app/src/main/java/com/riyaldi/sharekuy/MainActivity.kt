@@ -1,7 +1,6 @@
 package com.riyaldi.sharekuy
 
 import android.annotation.SuppressLint
-import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -9,7 +8,6 @@ import android.view.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.isGone
-import androidx.core.view.marginStart
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter
@@ -19,7 +17,6 @@ import com.google.firebase.firestore.Query
 import com.riyaldi.sharekuy.data.ShareanCourse
 import com.riyaldi.sharekuy.utils.Firebase.COURSES_PATH_COLLECTION
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.sharean_card.*
 import kotlinx.android.synthetic.main.sharean_card.view.*
 import kotlinx.coroutines.InternalCoroutinesApi
 
@@ -107,17 +104,17 @@ class MainActivity : AppCompatActivity(){
             setAdapter(mQuery)
             mAdapter.startListening()
         }
-        chipMotivation.setOnClickListener {
+        chipGeneral.setOnClickListener {
             mAdapter.stopListening()
             mQuery = shareanCourseCollection.whereEqualTo("status", "accepted")
-                .whereEqualTo("courseCategory", "motivasi")
+                .whereEqualTo("courseCategory", "umum")
             setAdapter(mQuery)
             mAdapter.startListening()
         }
-        chipCreativity.setOnClickListener {
+        chipContent.setOnClickListener {
             mAdapter.stopListening()
             mQuery = shareanCourseCollection.whereEqualTo("status", "accepted")
-                .whereEqualTo("courseCategory", "kreativitas")
+                .whereEqualTo("courseCategory", "konten_positif")
             setAdapter(mQuery)
             mAdapter.startListening()
         }

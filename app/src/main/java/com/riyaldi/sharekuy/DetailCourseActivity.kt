@@ -49,6 +49,8 @@ class DetailCourseActivity : AppCompatActivity() {
 
         chipsValidation(course)
 
+        supportActionBar?.title = course.courseName
+
         fabClick(course)
     }
 

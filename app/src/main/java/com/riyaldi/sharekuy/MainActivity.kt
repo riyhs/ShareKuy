@@ -7,7 +7,9 @@ import android.net.Uri
 import android.os.Bundle
 import android.view.*
 import androidx.appcompat.app.AppCompatActivity
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.isGone
+import androidx.core.view.marginStart
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter
@@ -179,20 +181,23 @@ class MainActivity : AppCompatActivity(){
                 tvCategory.text = "Kategori : $category"
 
                 if (shareanCourse.courseInstagram.isNotEmpty() && shareanCourse.courseWebsite.isNotEmpty()) {
-                    chipInstagram.isGone = false
-                    chipWebsite.isGone = false
+                    btInstagram.isGone = false
+                    btWebsite.isGone = false
                 } else if (shareanCourse.courseWebsite.isNotEmpty() && shareanCourse.courseInstagram.isEmpty()) {
-                    chipWebsite.isGone = false
+                    btWebsite.isGone = false
 
-                    // Remove margin when chipInstagram.isGone = true
-                    val param = chipWebsite.layoutParams as ViewGroup.MarginLayoutParams
+                    val param = btWebsite.layoutParams as ConstraintLayout.LayoutParams
                     param.marginStart = 0
-                    chipWebsite.layoutParams = param
+                    btWebsite.requestLayout()
                 } else {
-                    chipInstagram.isGone = false
+                    btInstagram.isGone = false
+
+                    val param = btInstagram.layoutParams as ConstraintLayout.LayoutParams
+                    param.marginEnd = 0
+                    btInstagram.requestLayout()
                 }
 
-                chipInstagram.setOnClickListener {
+                btInstagram.setOnClickListener {
                     val intentIg = Intent(Intent.ACTION_VIEW)
                     intentIg.data = Uri.parse(shareanCourse.courseInstagram)
                     intentIg.setPackage("com.instagram.android")
@@ -200,7 +205,7 @@ class MainActivity : AppCompatActivity(){
                     context.startActivity(intentIg)
                 }
 
-                chipWebsite.setOnClickListener {
+                btWebsite.setOnClickListener {
                     val intentWeb = Intent(Intent.ACTION_VIEW)
                     intentWeb.data = Uri.parse(shareanCourse.courseWebsite)
 

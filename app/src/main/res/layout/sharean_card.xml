@@ -15,15 +15,15 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
         android:paddingBottom="8dp">
 
         <TextView
             android:id="@+id/tvCourseName"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
-            android:layout_marginEnd="16dp"
             android:maxLines="1"
             android:text="Judul"
             android:textSize="22sp"
@@ -36,9 +36,7 @@
             android:id="@+id/tvCourseDescription"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
-            android:layout_marginEnd="16dp"
             android:ellipsize="end"
             android:maxLines="2"
             android:text="ShareKuy adalah platform untuk berbagi informasi tentang usaha-usaha untuk memajukan pendidikan yang merata untuk semua kalangan di Indonesia. Semoga bermanfaat."
@@ -56,30 +54,34 @@
             app:layout_constraintStart_toStartOf="@+id/tvCourseName"
             app:layout_constraintTop_toBottomOf="@+id/tvCourseName" />
 
-        <com.google.android.material.chip.Chip
-            android:id="@+id/chipInstagram"
-            android:layout_width="wrap_content"
+        <Button
+            android:id="@+id/btInstagram"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
+            android:layout_marginEnd="4dp"
+            android:backgroundTint="@color/colorIg"
             android:text="Instagram"
             android:visibility="gone"
-            android:textColor="@android:color/white"
-            app:chipSurfaceColor="@color/colorIg"
-            app:layout_constraintStart_toStartOf="@+id/tvCourseDescription"
+            app:layout_constraintEnd_toStartOf="@+id/btWebsite"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvCourseDescription"
             tools:visibility="visible" />
 
-        <com.google.android.material.chip.Chip
-            android:id="@+id/chipWebsite"
-            android:layout_width="wrap_content"
+        <Button
+            android:id="@+id/btWebsite"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="8dp"
+            android:backgroundTint="@color/colorWeb"
             android:text="Website"
             android:visibility="gone"
-            android:textColor="@android:color/white"
-            app:chipSurfaceColor="@color/colorWeb"
-            app:layout_constraintStart_toEndOf="@+id/chipInstagram"
-            app:layout_constraintTop_toTopOf="@+id/chipInstagram"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/btInstagram"
+            app:layout_constraintTop_toBottomOf="@+id/tvCourseDescription"
             tools:visibility="visible" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

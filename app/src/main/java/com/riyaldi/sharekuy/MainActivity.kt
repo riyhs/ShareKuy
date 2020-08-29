@@ -154,7 +154,7 @@ class MainActivity : AppCompatActivity(){
                 holder.bind(model)
                 holder.itemView.setOnClickListener {
                     val intent = Intent(this@MainActivity, DetailCourseActivity::class.java)
-                    intent.putExtra(DetailCourseActivity.EXTRA_ID, model)
+                    intent.putExtra(DetailCourseActivity.EXTRA_ID, model.id)
                     startActivity(intent)
                 }
             }

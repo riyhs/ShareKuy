@@ -1,10 +1,11 @@
+@file:Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
+
 package com.riyaldi.sharekuy
 
 import android.content.Intent
 import android.content.res.Resources
 import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import android.util.TypedValue
 import android.view.ViewGroup
 import android.widget.Toast
@@ -13,11 +14,17 @@ import androidx.core.content.ContextCompat
 import androidx.core.view.isGone
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.ktx.toObject
 import com.riyaldi.sharekuy.data.ShareanCourse
 import com.riyaldi.sharekuy.db.CourseDatabase
 import com.riyaldi.sharekuy.model.CourseFavouriteViewModel
+import com.riyaldi.sharekuy.utils.Firebase
 import kotlinx.android.synthetic.main.activity_detail_course.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.InternalCoroutinesApi
+import kotlinx.coroutines.launch
 
 
 @InternalCoroutinesApi
@@ -29,6 +36,8 @@ class DetailCourseActivity : AppCompatActivity() {
 
     private lateinit var courseFavViewmodel: CourseFavouriteViewModel
     private var isFav : Boolean = false
+    private val mFirestore = FirebaseFirestore.getInstance()
+    private val shareanCourseCollection = mFirestore.collection(Firebase.COURSES_PATH_COLLECTION)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,10 +45,10 @@ class DetailCourseActivity : AppCompatActivity() {
 
         courseFavViewmodel = ViewModelProvider(this).get(CourseFavouriteViewModel::class.java)
 
-        val shareanCourse = intent.getParcelableExtra<ShareanCourse>(EXTRA_ID) as ShareanCourse
+        val userId = intent.getStringExtra(EXTRA_ID) as String
 
-        isLiked(shareanCourse.id)
-        initView(shareanCourse)
+        retrieveData(userId)
+        isLiked(userId)
     }
 
     private fun initView(course: ShareanCourse) {
@@ -52,6 +61,21 @@ class DetailCourseActivity : AppCompatActivity() {
         supportActionBar?.title = course.courseName
 
         fabClick(course)
+    }
+
+    private fun retrieveData(id: String) = CoroutineScope(Dispatchers.IO).launch {
+        val querySnapshot = shareanCourseCollection.document(id)
+        querySnapshot.get()
+            .addOnCompleteListener {
+                if (!it.isSuccessful) Toast.makeText(this@DetailCourseActivity, "Pastikan Terhubung Internet", Toast.LENGTH_SHORT).show()
+            }
+            .addOnSuccessListener {
+                val course = it.toObject<ShareanCourse>() as ShareanCourse
+                initView(course)
+            }
+            .addOnFailureListener {
+                Toast.makeText(this@DetailCourseActivity, "Error : ${it.message}", Toast.LENGTH_SHORT).show()
+            }
     }
 
     private fun chipsValidation(shareanCourse: ShareanCourse) {
@@ -129,7 +153,6 @@ class DetailCourseActivity : AppCompatActivity() {
         val db = CourseDatabase.getInstance(applicationContext)
         val dao = db.courseDao()
         dao.getById(id).observe(this, Observer { data ->
-            Log.d("DATA", "$data")
             if (data.isNotEmpty() && data[0].id.isNotEmpty()) {
                 isFav = true
                 changeLoveIcon(isFav)

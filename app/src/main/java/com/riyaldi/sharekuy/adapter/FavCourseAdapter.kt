@@ -9,10 +9,13 @@ import android.view.ViewGroup
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.isGone
 import androidx.recyclerview.widget.RecyclerView
+import com.riyaldi.sharekuy.DetailCourseActivity
 import com.riyaldi.sharekuy.R
 import com.riyaldi.sharekuy.db.Course
 import kotlinx.android.synthetic.main.sharean_card.view.*
+import kotlinx.coroutines.InternalCoroutinesApi
 
+@InternalCoroutinesApi
 class FavCourseAdapter (private val course: List<Course>) : RecyclerView.Adapter<FavCourseAdapter.ListViewHolder>() {
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -32,6 +35,12 @@ class FavCourseAdapter (private val course: List<Course>) : RecyclerView.Adapter
         @SuppressLint("SetTextI18n")
         fun bind(shareanCourse: Course) {
             with(itemView) {
+                itemView.setOnClickListener {
+                    val intent = Intent(context, DetailCourseActivity::class.java)
+                    intent.putExtra(DetailCourseActivity.EXTRA_ID, shareanCourse.id)
+                    context.startActivity(intent)
+                }
+
                 val name = shareanCourse.courseName
                 val description = shareanCourse.courseDescription
                 val category = shareanCourse.courseCategory

@@ -16,6 +16,7 @@ class AddActivity : AppCompatActivity() {
 
     private val mFirestore = FirebaseFirestore.getInstance()
     private val shareanCourseCollection = mFirestore.collection(COURSES_PATH_COLLECTION)
+    private var id = "id"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,30 +27,31 @@ class AddActivity : AppCompatActivity() {
 
     private fun initView() {
         btSaveAddCourses.setOnClickListener {
-            val shareanCourse = initData()
             if (etInstagram.text != null && etWebsite.text != null && rgCategory.checkedRadioButtonId != -1 && etCourseName.text != null && etCourseDescription.text != null) {
                 if (etCourseName.text!!.isNotEmpty() && etCourseDescription.text!!.isNotEmpty()) {
                     if (etInstagram.text!!.isNotEmpty() || etWebsite.text!!.isNotEmpty()) {
-                        buildDialog(shareanCourse)
+                        buildDialog()
                     }
                 }
             }
         }
     }
 
-    private fun buildDialog(shareanCourse: MutableMap<String, Any>) {
+    private fun buildDialog() {
         MaterialAlertDialogBuilder(this)
             .setTitle("Catatan")
             .setMessage("Pastikan data yang dimasukan sudah sesuai, setiap data yang di unggah akan kami tinjau dalam waktu 1 x 24 jam sebelum di tampilkan ke aplikasi, terima kasih telah berpartisipasi dalam usaha memajukan dunia pendidikan di Indonesia")
 
             .setPositiveButton("Simpan Data") { _, _ ->
+                id = setIdByTime()
+                val shareanCourse = initData()
                 saveData(shareanCourse)
             }
             .show()
     }
 
     private fun saveData(shareanCourse : MutableMap<String, Any>) = CoroutineScope(Dispatchers.IO).launch {
-        shareanCourseCollection.document(setIdByTime()).set(shareanCourse)
+        shareanCourseCollection.document(id).set(shareanCourse)
             .addOnCompleteListener {
                 finish()
                 if (it.isSuccessful) Toast.makeText(this@AddActivity, "Berhasil menambahkan ${shareanCourse["courseName"]}", Toast.LENGTH_LONG).show()
@@ -120,7 +122,7 @@ class AddActivity : AppCompatActivity() {
     }
 
     private fun setTemplateData(courseSharean: MutableMap<String, Any>): MutableMap<String, Any> {
-        courseSharean["id"] = setIdByTime()
+        courseSharean["id"] = id
         courseSharean["status"] = "pending"
         courseSharean["courseInstagram"] = "null"
         courseSharean["courseWebsite"] = "null"

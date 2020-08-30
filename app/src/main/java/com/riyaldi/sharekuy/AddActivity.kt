@@ -40,7 +40,7 @@ class AddActivity : AppCompatActivity() {
     private fun buildDialog() {
         MaterialAlertDialogBuilder(this)
             .setTitle("Catatan")
-            .setMessage("Pastikan data yang dimasukan sudah sesuai, setiap data yang di unggah akan kami tinjau dalam waktu 1 x 24 jam sebelum di tampilkan ke aplikasi, terima kasih telah berpartisipasi dalam usaha memajukan dunia pendidikan di Indonesia")
+            .setMessage("Pastikan data yang dimasukan sudah sesuai,\nsetiap data yang di unggah akan kami tinjau dalam waktu 1 x 24 jam sebelum di tampilkan ke aplikasi.")
 
             .setPositiveButton("Simpan Data") { _, _ ->
                 id = setIdByTime()

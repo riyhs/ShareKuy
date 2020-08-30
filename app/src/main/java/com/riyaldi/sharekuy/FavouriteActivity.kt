@@ -2,6 +2,8 @@ package com.riyaldi.sharekuy
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
+import androidx.core.view.isGone
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.riyaldi.sharekuy.adapter.FavCourseAdapter
@@ -22,6 +24,19 @@ class FavouriteActivity : AppCompatActivity() {
 
     }
 
+    override fun onResume() {
+        super.onResume()
+        Toast.makeText(this, "resume", Toast.LENGTH_SHORT).show()
+        getFavUserData()
+    }
+
+    override fun onPause() {
+        super.onPause()
+//        finish()
+        getFavUserData()
+        Toast.makeText(this, "pause", Toast.LENGTH_SHORT).show()
+    }
+
     private fun setAdapter(courseData: List<Course>) {
         rvFavCourse.apply {
             layoutManager = LinearLayoutManager(this@FavouriteActivity)
@@ -34,8 +49,10 @@ class FavouriteActivity : AppCompatActivity() {
         val dao = db.courseDao()
 
         dao.getAll().observe(this, Observer { liveUserData ->
-            if (liveUserData.isNotEmpty()){
+            if (liveUserData.isNotEmpty() && liveUserData != null){
                 setAdapter(liveUserData)
+            } else {
+                tvEmptyData.isGone = false
             }
         })
     }

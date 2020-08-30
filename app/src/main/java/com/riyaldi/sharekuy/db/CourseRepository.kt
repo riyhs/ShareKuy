@@ -1,6 +1,7 @@
 package com.riyaldi.sharekuy.db
 
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 
 class CourseRepository (private val courseDao: CourseDao) {
     val allCourse: LiveData<List<Course>> = courseDao.getAll()

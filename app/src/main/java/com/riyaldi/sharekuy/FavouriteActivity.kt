@@ -24,19 +24,6 @@ class FavouriteActivity : AppCompatActivity() {
 
     }
 
-    override fun onResume() {
-        super.onResume()
-        Toast.makeText(this, "resume", Toast.LENGTH_SHORT).show()
-        getFavUserData()
-    }
-
-    override fun onPause() {
-        super.onPause()
-//        finish()
-        getFavUserData()
-        Toast.makeText(this, "pause", Toast.LENGTH_SHORT).show()
-    }
-
     private fun setAdapter(courseData: List<Course>) {
         rvFavCourse.apply {
             layoutManager = LinearLayoutManager(this@FavouriteActivity)

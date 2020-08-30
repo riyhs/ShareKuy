@@ -40,7 +40,6 @@ class FavCourseAdapter (private val course: List<Course>) : RecyclerView.Adapter
                     intent.putExtra(DetailCourseActivity.EXTRA_ID, shareanCourse.id)
                     context.startActivity(intent)
                 }
-
                 val name = shareanCourse.courseName
                 val description = shareanCourse.courseDescription
                 val category = shareanCourse.courseCategory

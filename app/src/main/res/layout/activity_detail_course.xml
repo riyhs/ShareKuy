@@ -17,14 +17,13 @@
             android:layout_marginStart="24dp"
             android:layout_marginTop="24dp"
             android:layout_marginEnd="8dp"
-            android:text="Name"
             android:textColor="@android:color/primary_text_light"
             android:textSize="30sp"
             android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/fabFav"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Name" />
 
         <TextView
             android:id="@+id/tvdetailCourseDescription"
@@ -32,13 +31,13 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="24dp"
-            android:text="Deskripsi"
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/tvDetailCourseName"
             app:layout_constraintTop_toBottomOf="@+id/textView4"
-            app:lineHeight="24sp" />
+            app:lineHeight="24sp"
+            tools:text="Deskripsi" />
 
         <TextView
             android:id="@+id/textView4"
@@ -54,7 +53,6 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:minLines="1"
-            android:text="TextView"
             android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@+id/textView4"

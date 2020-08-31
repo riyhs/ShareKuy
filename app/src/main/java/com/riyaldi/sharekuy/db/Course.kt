@@ -1,11 +1,13 @@
 package com.riyaldi.sharekuy.db
 
 import android.os.Parcelable
+import androidx.annotation.Keep
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import kotlinx.android.parcel.Parcelize
 
+@Keep
 @Parcelize
 @Entity(tableName = "course_table")
 data class Course(

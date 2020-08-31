@@ -15,7 +15,6 @@ import androidx.core.view.isGone
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.ktx.toObject
 import com.riyaldi.sharekuy.data.ShareanCourse
 import com.riyaldi.sharekuy.db.CourseDatabase
 import com.riyaldi.sharekuy.model.CourseFavouriteViewModel
@@ -70,7 +69,7 @@ class DetailCourseActivity : AppCompatActivity() {
                 if (!it.isSuccessful) Toast.makeText(this@DetailCourseActivity, "Pastikan Terhubung Internet", Toast.LENGTH_SHORT).show()
             }
             .addOnSuccessListener {
-                val course = it.toObject<ShareanCourse>() as ShareanCourse
+                val course = it.toObject(ShareanCourse::class.java) as ShareanCourse
                 initView(course)
             }
             .addOnFailureListener {

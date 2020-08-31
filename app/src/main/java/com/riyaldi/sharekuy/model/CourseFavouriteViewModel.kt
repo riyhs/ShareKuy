@@ -3,7 +3,6 @@ package com.riyaldi.sharekuy.model
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import com.riyaldi.sharekuy.db.Course
 import com.riyaldi.sharekuy.db.CourseDao
 import com.riyaldi.sharekuy.db.CourseDatabase

@@ -14,7 +14,7 @@ class SplashActivity : AppCompatActivity() {
 
         supportFragmentManager
             .beginTransaction()
-            .add(R.id.fragmentSplash, SplashFragment(), SplashFragment::class.java.simpleName)
+            .add(R.id.fragmentSplash, SplashFragment(), "SPLASH_FRAGMENT_TAG")
             .commit()
 
         Handler().postDelayed({

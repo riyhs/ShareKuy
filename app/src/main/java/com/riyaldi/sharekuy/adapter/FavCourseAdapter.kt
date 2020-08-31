@@ -20,18 +20,18 @@ class FavCourseAdapter (private val course: List<Course>) : RecyclerView.Adapter
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): FavCourseAdapter.ListViewHolder {
+    ): ListViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.sharean_card, parent, false)
         return ListViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: FavCourseAdapter.ListViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
         holder.bind(course[position])
     }
 
     override fun getItemCount(): Int = course.size
 
-    inner class ListViewHolder (itemview: View) : RecyclerView.ViewHolder(itemview){
+    class ListViewHolder (itemview: View) : RecyclerView.ViewHolder(itemview){
         @SuppressLint("SetTextI18n")
         fun bind(shareanCourse: Course) {
             with(itemView) {

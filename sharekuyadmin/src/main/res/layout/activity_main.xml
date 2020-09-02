@@ -18,21 +18,51 @@
         app:layout_constraintVertical_bias="0.0"
         tools:listitem="@layout/sharean_card" />
 
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/cgStatus"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:selectionRequired="true"
+        app:singleLine="true"
+        app:singleSelection="true">
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chipPendingStatus"
+            style="@style/CustomChipChoice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:checked="true"
+            android:clickable="true"
+            android:focusable="true"
+            android:text="pending" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chipAcceptedStatus"
+            style="@style/CustomChipChoice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:focusable="true"
+            android:text="accepted" />
+    </com.google.android.material.chip.ChipGroup>
+
     <HorizontalScrollView
         android:id="@+id/hsvChips"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
         android:scrollbars="none"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/cgStatus">
 
         <com.google.android.material.chip.ChipGroup
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            app:singleLine="true"
             app:selectionRequired="true"
+            app:singleLine="true"
             app:singleSelection="true">
 
             <com.google.android.material.chip.Chip
@@ -48,21 +78,21 @@
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/chipSchool"
+                style="@style/CustomChipChoice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:clickable="true"
                 android:focusable="true"
-                android:text="materi_sekolah"
-                style="@style/CustomChipChoice"/>
+                android:text="materi_sekolah" />
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/chipTech"
+                style="@style/CustomChipChoice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:clickable="true"
                 android:focusable="true"
-                android:text="teknologi"
-                style="@style/CustomChipChoice"/>
+                android:text="teknologi" />
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/chipGeneral"
@@ -84,13 +114,13 @@
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/chipOthers"
+                style="@style/CustomChipChoice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="16dp"
                 android:clickable="true"
                 android:focusable="true"
-                android:text="yang_lainnya"
-                style="@style/CustomChipChoice" />
+                android:text="yang_lainnya" />
         </com.google.android.material.chip.ChipGroup>
 
     </HorizontalScrollView>

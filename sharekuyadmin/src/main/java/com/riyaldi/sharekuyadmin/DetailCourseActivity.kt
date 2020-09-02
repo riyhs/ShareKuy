@@ -89,7 +89,7 @@ class DetailCourseActivity : AppCompatActivity() {
     }
 
     private fun acceptData(shareanCourse: MutableMap<String, Any>) = CoroutineScope(Dispatchers.IO).launch {
-        shareanCourseCollection.document(userId).set(shareanCourse)
+        shareanCourseCollection.document(userId).update(shareanCourse)
             .addOnCompleteListener {
                 if (it.isSuccessful) Toast.makeText(this@DetailCourseActivity, "Berhasil menambahkan ${shareanCourse["courseName"]}", Toast.LENGTH_LONG).show()
                 else Toast.makeText(this@DetailCourseActivity, "Gagal menambahkan ${shareanCourse["courseName"]}", Toast.LENGTH_LONG).show()

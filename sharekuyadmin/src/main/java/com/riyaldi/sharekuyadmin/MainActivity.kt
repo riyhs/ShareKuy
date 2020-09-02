@@ -24,9 +24,11 @@ import kotlinx.coroutines.InternalCoroutinesApi
 class MainActivity : AppCompatActivity(){
 
     private lateinit var mAdapter: FirestoreRecyclerAdapter<ShareanCourse, ShareanCoursesViewHolder>
+    private var status = "pending"
+    private var courseCategory = ""
     private val mFirestore = FirebaseFirestore.getInstance()
     private val shareanCourseCollection = mFirestore.collection(COURSES_PATH_COLLECTION)
-    private var mQuery = shareanCourseCollection.whereEqualTo("status", "pending")
+    private var mQuery = shareanCourseCollection.whereEqualTo("status", status)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,33 +47,6 @@ class MainActivity : AppCompatActivity(){
         chipClick()
     }
 
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        val inflater = menuInflater
-        inflater.inflate(R.menu.menu, menu)
-        return true
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when (item.itemId) {
-//            R.id.menuAdd -> {
-//                startActivity(Intent(this@MainActivity, AddActivity::class.java))
-//                true
-//            }
-//
-//            R.id.menuAbout -> {
-//                startActivity(Intent(this@MainActivity, AboutActivity::class.java))
-//                true
-//            }
-//
-//            R.id.menuFav -> {
-//                startActivity(Intent(this@MainActivity, FavouriteActivity::class.java))
-//                true
-//            }
-
-            else -> true
-        }
-    }
-
     override fun onStart() {
         super.onStart()
         mAdapter.startListening()
@@ -84,44 +59,67 @@ class MainActivity : AppCompatActivity(){
 
 
     private fun chipClick() {
+        chipPendingStatus.setOnClickListener {
+            status = "pending"
+            mAdapter.stopListening()
+            mQuery = shareanCourseCollection.whereEqualTo("status", status)
+                .whereEqualTo("courseCategory", courseCategory)
+            setAdapter(mQuery)
+            mAdapter.startListening()
+        }
+
+        chipAcceptedStatus.setOnClickListener {
+            status = "accepted"
+            mAdapter.stopListening()
+            mQuery = shareanCourseCollection.whereEqualTo("status", status)
+                .whereEqualTo("courseCategory", courseCategory)
+            setAdapter(mQuery)
+            mAdapter.startListening()
+        }
+
         chipAll.setOnClickListener {
             mAdapter.stopListening()
-            mQuery = shareanCourseCollection.whereEqualTo("status", "accepted")
+            mQuery = shareanCourseCollection.whereEqualTo("status", status)
             setAdapter(mQuery)
             mAdapter.startListening()
         }
         chipSchool.setOnClickListener {
             mAdapter.stopListening()
-            mQuery = shareanCourseCollection.whereEqualTo("status", "accepted")
-                .whereEqualTo("courseCategory", "materi_sekolah")
+            courseCategory = "materi_sekolah"
+            mQuery = shareanCourseCollection.whereEqualTo("status", status)
+                .whereEqualTo("courseCategory", courseCategory)
             setAdapter(mQuery)
             mAdapter.startListening()
         }
         chipTech.setOnClickListener {
             mAdapter.stopListening()
-            mQuery = shareanCourseCollection.whereEqualTo("status", "accepted")
-                .whereEqualTo("courseCategory", "teknologi")
+            courseCategory = "teknologi"
+            mQuery = shareanCourseCollection.whereEqualTo("status", status)
+                .whereEqualTo("courseCategory", courseCategory)
             setAdapter(mQuery)
             mAdapter.startListening()
         }
         chipGeneral.setOnClickListener {
             mAdapter.stopListening()
-            mQuery = shareanCourseCollection.whereEqualTo("status", "accepted")
-                .whereEqualTo("courseCategory", "umum")
+            courseCategory = "umum"
+            mQuery = shareanCourseCollection.whereEqualTo("status", status)
+                .whereEqualTo("courseCategory", courseCategory)
             setAdapter(mQuery)
             mAdapter.startListening()
         }
         chipContent.setOnClickListener {
             mAdapter.stopListening()
-            mQuery = shareanCourseCollection.whereEqualTo("status", "accepted")
-                .whereEqualTo("courseCategory", "konten_positif")
+            courseCategory = "konten_positif"
+            mQuery = shareanCourseCollection.whereEqualTo("status", status)
+                .whereEqualTo("courseCategory", courseCategory)
             setAdapter(mQuery)
             mAdapter.startListening()
         }
         chipOthers.setOnClickListener {
             mAdapter.stopListening()
-            mQuery = shareanCourseCollection.whereEqualTo("status", "accepted")
-                .whereEqualTo("courseCategory", "yang_lainnya")
+            courseCategory = "yang_lainnya"
+            mQuery = shareanCourseCollection.whereEqualTo("status", status)
+                .whereEqualTo("courseCategory", courseCategory)
             setAdapter(mQuery)
             mAdapter.startListening()
         }

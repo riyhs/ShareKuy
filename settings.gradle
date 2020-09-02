@@ -1,2 +1,3 @@
+include ':sharekuyadmin'
 include ':app'
 rootProject.name = "ShareKuy"

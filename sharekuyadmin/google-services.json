@@ -1,0 +1,69 @@
+{
+  "project_info": {
+    "project_number": "1002949861492",
+    "firebase_url": "https://sharekuy.firebaseio.com",
+    "project_id": "sharekuy",
+    "storage_bucket": "sharekuy.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1002949861492:android:b2f8125168161803f13121",
+        "android_client_info": {
+          "package_name": "com.riyaldi.sharekuy"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1002949861492-eggv5k7t2dt0t4dc3tl2i3pgp1g434lc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCyX6aVrlgMX9xxdaIiIWdYUKQV7S62pwg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1002949861492-eggv5k7t2dt0t4dc3tl2i3pgp1g434lc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1002949861492:android:bc8ecc8d01f30f5cf13121",
+        "android_client_info": {
+          "package_name": "com.riyaldi.sharekuyadmin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1002949861492-eggv5k7t2dt0t4dc3tl2i3pgp1g434lc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCyX6aVrlgMX9xxdaIiIWdYUKQV7S62pwg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1002949861492-eggv5k7t2dt0t4dc3tl2i3pgp1g434lc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

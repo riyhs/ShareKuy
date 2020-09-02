@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity(){
     private lateinit var mAdapter: FirestoreRecyclerAdapter<ShareanCourse, ShareanCoursesViewHolder>
     private val mFirestore = FirebaseFirestore.getInstance()
     private val shareanCourseCollection = mFirestore.collection(COURSES_PATH_COLLECTION)
-    private var mQuery = shareanCourseCollection.whereEqualTo("status", "accepted")
+    private var mQuery = shareanCourseCollection.whereEqualTo("status", "pending")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -11,7 +11,6 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isGone
-import androidx.lifecycle.ViewModelProvider
 import com.google.firebase.firestore.FirebaseFirestore
 import com.riyaldi.sharekuyadmin.data.ShareanCourse
 import com.riyaldi.sharekuyadmin.utils.Firebase
@@ -28,31 +27,54 @@ class DetailCourseActivity : AppCompatActivity() {
         const val EXTRA_ID = "extra_id"
     }
 
-    private var isFav : Boolean = false
     private val mFirestore = FirebaseFirestore.getInstance()
     private val shareanCourseCollection = mFirestore.collection(Firebase.COURSES_PATH_COLLECTION)
+    private lateinit var userId : String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail_course)
 
-        val userId = intent.getStringExtra(EXTRA_ID) as String
+        userId = intent.getStringExtra(EXTRA_ID) as String
 
-        retrieveData(userId)
+        retrieveData()
+
+        btAccDetail.setOnClickListener {
+            val data = initData()
+            acceptData(data)
+        }
     }
 
     private fun initView(course: ShareanCourse) {
-        tvDetailCourseName.text = course.courseName
+        etDetailCourseName.setText(course.courseName)
+        etDetailCourseDescription.setText(course.courseDescription)
+        etDetailCourseIg.setText(course.courseInstagram)
+        etDetailCourseWeb.setText(course.courseWebsite)
         tvDetailCourseCategory.text = course.courseCategory
-        tvdetailCourseDescription.text = course.courseDescription
 
         chipsValidation(course)
 
         supportActionBar?.title = course.courseName
     }
 
-    private fun retrieveData(id: String) = CoroutineScope(Dispatchers.IO).launch {
-        val querySnapshot = shareanCourseCollection.document(id)
+    private fun initData() : MutableMap<String, Any> {
+        val courseSharean = mutableMapOf<String, Any>()
+        val courseName = etDetailCourseName.text
+        val courseDescription = etDetailCourseDescription.text
+        val courseInstagram = etDetailCourseIg.text
+        val courseWeb = etDetailCourseWeb.text
+
+        if (courseName != null) courseSharean["courseName"] = courseName.toString()
+        if (courseDescription != null) courseSharean["courseDescription"] = courseDescription.toString()
+        courseSharean["courseInstagram"] = courseInstagram.toString()
+        courseSharean["courseWebsite"] = courseWeb.toString()
+        courseSharean["status"] = "accepted"
+
+        return courseSharean
+    }
+
+    private fun retrieveData() = CoroutineScope(Dispatchers.IO).launch {
+        val querySnapshot = shareanCourseCollection.document(userId)
         querySnapshot.get()
             .addOnCompleteListener {
                 if (!it.isSuccessful) Toast.makeText(this@DetailCourseActivity, "Pastikan Terhubung Internet", Toast.LENGTH_SHORT).show()
@@ -63,6 +85,17 @@ class DetailCourseActivity : AppCompatActivity() {
             }
             .addOnFailureListener {
                 Toast.makeText(this@DetailCourseActivity, "Error : ${it.message}", Toast.LENGTH_SHORT).show()
+            }
+    }
+
+    private fun acceptData(shareanCourse: MutableMap<String, Any>) = CoroutineScope(Dispatchers.IO).launch {
+        shareanCourseCollection.document(userId).set(shareanCourse)
+            .addOnCompleteListener {
+                if (it.isSuccessful) Toast.makeText(this@DetailCourseActivity, "Berhasil menambahkan ${shareanCourse["courseName"]}", Toast.LENGTH_LONG).show()
+                else Toast.makeText(this@DetailCourseActivity, "Gagal menambahkan ${shareanCourse["courseName"]}", Toast.LENGTH_LONG).show()
+            }
+            .addOnFailureListener {
+                Toast.makeText(this@DetailCourseActivity, "Error ${it.message}", Toast.LENGTH_LONG).show()
             }
     }
 

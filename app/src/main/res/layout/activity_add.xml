@@ -8,7 +8,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:context=".AddActivity">
+    tools:context=".ui.activity.AddActivity">
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/tiCourseName"

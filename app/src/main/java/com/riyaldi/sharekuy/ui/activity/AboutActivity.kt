@@ -1,9 +1,10 @@
-package com.riyaldi.sharekuy
+package com.riyaldi.sharekuy.ui.activity
 
 import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.riyaldi.sharekuy.R
 import kotlinx.android.synthetic.main.activity_about.*
 
 class AboutActivity : AppCompatActivity() {

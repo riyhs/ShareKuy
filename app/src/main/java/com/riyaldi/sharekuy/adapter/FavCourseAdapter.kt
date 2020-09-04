@@ -9,7 +9,7 @@ import android.view.ViewGroup
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.isGone
 import androidx.recyclerview.widget.RecyclerView
-import com.riyaldi.sharekuy.DetailCourseActivity
+import com.riyaldi.sharekuy.ui.activity.DetailCourseActivity
 import com.riyaldi.sharekuy.R
 import com.riyaldi.sharekuy.db.Course
 import kotlinx.android.synthetic.main.sharean_card.view.*

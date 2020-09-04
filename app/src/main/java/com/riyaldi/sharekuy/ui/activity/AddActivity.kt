@@ -1,4 +1,4 @@
-package com.riyaldi.sharekuy
+package com.riyaldi.sharekuy.ui.activity
 
 import android.os.Bundle
 import android.widget.RadioButton
@@ -6,6 +6,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.firebase.firestore.FirebaseFirestore
+import com.riyaldi.sharekuy.R
 import com.riyaldi.sharekuy.utils.Firebase.COURSES_PATH_COLLECTION
 import kotlinx.android.synthetic.main.activity_add.*
 import kotlinx.coroutines.CoroutineScope

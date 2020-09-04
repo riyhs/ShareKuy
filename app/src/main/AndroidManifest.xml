@@ -11,18 +11,18 @@
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SplashActivity"
+        <activity android:name=".ui.activity.SplashActivity"
             android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".DetailCourseActivity" />
-        <activity android:name=".FavouriteActivity" />
-        <activity android:name=".AboutActivity" />
-        <activity android:name=".AddActivity" />
-        <activity android:name=".MainActivity"/>
+        <activity android:name=".ui.activity.DetailCourseActivity" />
+        <activity android:name=".ui.activity.FavouriteActivity" />
+        <activity android:name=".ui.activity.AboutActivity" />
+        <activity android:name=".ui.activity.AddActivity" />
+        <activity android:name=".ui.activity.MainActivity"/>
     </application>
 
 </manifest>

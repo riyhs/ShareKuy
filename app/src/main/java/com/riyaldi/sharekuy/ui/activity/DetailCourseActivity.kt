@@ -1,6 +1,6 @@
 @file:Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
 
-package com.riyaldi.sharekuy
+package com.riyaldi.sharekuy.ui.activity
 
 import android.content.Intent
 import android.content.res.Resources
@@ -15,6 +15,7 @@ import androidx.core.view.isGone
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.google.firebase.firestore.FirebaseFirestore
+import com.riyaldi.sharekuy.R
 import com.riyaldi.sharekuy.data.ShareanCourse
 import com.riyaldi.sharekuy.db.CourseDatabase
 import com.riyaldi.sharekuy.model.CourseFavouriteViewModel

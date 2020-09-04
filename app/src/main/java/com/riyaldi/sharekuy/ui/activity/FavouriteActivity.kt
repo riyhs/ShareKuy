@@ -1,4 +1,4 @@
-package com.riyaldi.sharekuy
+package com.riyaldi.sharekuy.ui.activity
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -6,6 +6,7 @@ import androidx.core.view.isGone
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.riyaldi.sharekuy.R
 import com.riyaldi.sharekuy.adapter.FavCourseAdapter
 import com.riyaldi.sharekuy.db.Course
 import com.riyaldi.sharekuy.db.CourseDatabase

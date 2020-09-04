@@ -1,4 +1,4 @@
-package com.riyaldi.sharekuy.ui.fragment
+package com.riyaldi.sharekuy
 
 import android.os.Bundle
 import android.view.LayoutInflater

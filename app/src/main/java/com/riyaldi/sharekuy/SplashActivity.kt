@@ -1,11 +1,9 @@
-package com.riyaldi.sharekuy.ui.activity
+package com.riyaldi.sharekuy
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
-import com.riyaldi.sharekuy.R
-import com.riyaldi.sharekuy.ui.fragment.SplashFragment
+import androidx.appcompat.app.AppCompatActivity
 import kotlinx.coroutines.InternalCoroutinesApi
 
 @InternalCoroutinesApi

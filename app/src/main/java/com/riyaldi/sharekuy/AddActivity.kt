@@ -1,27 +1,24 @@
-package com.riyaldi.sharekuy.ui.activity
+package com.riyaldi.sharekuy
 
 import android.os.Bundle
 import android.widget.RadioButton
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import com.google.firebase.firestore.FirebaseFirestore
-import com.riyaldi.sharekuy.R
-import com.riyaldi.sharekuy.utils.Firebase.COURSES_PATH_COLLECTION
+import com.riyaldi.sharekuy.model.AddActivityViewModel
 import kotlinx.android.synthetic.main.activity_add.*
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 
 class AddActivity : AppCompatActivity() {
 
-    private val mFirestore = FirebaseFirestore.getInstance()
-    private val shareanCourseCollection = mFirestore.collection(COURSES_PATH_COLLECTION)
+    private lateinit var addActivityViewModel: AddActivityViewModel
     private var id = "id"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add)
+
+        addActivityViewModel = ViewModelProvider(this).get(AddActivityViewModel::class.java)
 
         initView()
     }
@@ -46,21 +43,10 @@ class AddActivity : AppCompatActivity() {
             .setPositiveButton("Simpan Data") { _, _ ->
                 id = setIdByTime()
                 val shareanCourse = initData()
-                saveData(shareanCourse)
+                addActivityViewModel.saveData(shareanCourse, id)
+                finish()
             }
             .show()
-    }
-
-    private fun saveData(shareanCourse : MutableMap<String, Any>) = CoroutineScope(Dispatchers.IO).launch {
-        shareanCourseCollection.document(id).set(shareanCourse)
-            .addOnCompleteListener {
-                finish()
-                if (it.isSuccessful) Toast.makeText(this@AddActivity, "Berhasil menambahkan ${shareanCourse["courseName"]}", Toast.LENGTH_LONG).show()
-                else Toast.makeText(this@AddActivity, "Gagal menambahkan ${shareanCourse["courseName"]}, ulangi beberapa menit lagi.", Toast.LENGTH_LONG).show()
-            }
-            .addOnFailureListener {
-                Toast.makeText(this@AddActivity, "Error ${it.message}", Toast.LENGTH_LONG).show()
-            }
     }
 
     private fun initData() : MutableMap<String, Any> {

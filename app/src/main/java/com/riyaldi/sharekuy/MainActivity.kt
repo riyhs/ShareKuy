@@ -1,4 +1,4 @@
-package com.riyaldi.sharekuy.ui.activity
+package com.riyaldi.sharekuy
 
 import android.annotation.SuppressLint
 import android.content.Intent
@@ -14,7 +14,6 @@ import com.firebase.ui.firestore.FirestoreRecyclerAdapter
 import com.firebase.ui.firestore.FirestoreRecyclerOptions
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
-import com.riyaldi.sharekuy.R
 import com.riyaldi.sharekuy.data.ShareanCourse
 import com.riyaldi.sharekuy.utils.Firebase.COURSES_PATH_COLLECTION
 import kotlinx.android.synthetic.main.activity_main.*
@@ -43,48 +42,10 @@ class MainActivity : AppCompatActivity(){
             setHasFixedSize(true)
         }
 
-        chipClick()
+        optionsFilterChipClick()
     }
 
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        val inflater = menuInflater
-        inflater.inflate(R.menu.menu, menu)
-        return true
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when (item.itemId) {
-            R.id.menuAdd -> {
-                startActivity(Intent(this@MainActivity, AddActivity::class.java))
-                true
-            }
-
-            R.id.menuAbout -> {
-                startActivity(Intent(this@MainActivity, AboutActivity::class.java))
-                true
-            }
-
-            R.id.menuFav -> {
-                startActivity(Intent(this@MainActivity, FavouriteActivity::class.java))
-                true
-            }
-
-            else -> true
-        }
-    }
-
-    override fun onStart() {
-        super.onStart()
-        mAdapter.startListening()
-    }
-
-    override fun onStop() {
-        super.onStop()
-        mAdapter.stopListening()
-    }
-
-
-    private fun chipClick() {
+    private fun optionsFilterChipClick() {
         chipAll.setOnClickListener {
             mAdapter.stopListening()
             mQuery = shareanCourseCollection.whereEqualTo("status", "accepted")
@@ -129,31 +90,22 @@ class MainActivity : AppCompatActivity(){
     }
 
     private fun setAdapter(query: Query) {
+        // query to get data from FireStore
         val options = FirestoreRecyclerOptions.Builder<ShareanCourse>()
             .setQuery(query, ShareanCourse::class.java)
             .build()
 
         mAdapter = object : FirestoreRecyclerAdapter<ShareanCourse, ShareanCoursesViewHolder>(options) {
-            override fun onCreateViewHolder(
-                parent: ViewGroup,
-                viewType: Int
-            ): ShareanCoursesViewHolder {
+            override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ShareanCoursesViewHolder {
                 return ShareanCoursesViewHolder(
-                    LayoutInflater.from(parent.context).inflate(
-                        R.layout.sharean_card,
-                        parent,
-                        false
-                    )
+                    LayoutInflater.from(parent.context).inflate(R.layout.sharean_card, parent, false)
                 )
             }
 
-            override fun onBindViewHolder(
-                holder: ShareanCoursesViewHolder,
-                position: Int,
-                model: ShareanCourse
-            ) {
+            override fun onBindViewHolder(holder: ShareanCoursesViewHolder, position: Int, model: ShareanCourse) {
                 holder.bind(model)
                 holder.itemView.setOnClickListener {
+                    // open DetailCourseActivity & passing id
                     val intent = Intent(this@MainActivity, DetailCourseActivity::class.java)
                     intent.putExtra(DetailCourseActivity.EXTRA_ID, model.id)
                     startActivity(intent)
@@ -212,5 +164,42 @@ class MainActivity : AppCompatActivity(){
                 }
             }
         }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        val inflater = menuInflater
+        inflater.inflate(R.menu.menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.menuAdd -> {
+                startActivity(Intent(this@MainActivity, AddActivity::class.java))
+                true
+            }
+
+            R.id.menuAbout -> {
+                startActivity(Intent(this@MainActivity, AboutActivity::class.java))
+                true
+            }
+
+            R.id.menuFav -> {
+                startActivity(Intent(this@MainActivity, FavouriteActivity::class.java))
+                true
+            }
+
+            else -> true
+        }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        mAdapter.startListening()
+    }
+
+    override fun onStop() {
+        super.onStop()
+        mAdapter.stopListening()
     }
 }

@@ -1,4 +1,4 @@
-package com.riyaldi.sharekuy.ui.activity
+package com.riyaldi.sharekuy
 
 import android.content.Intent
 import android.net.Uri
